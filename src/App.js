@@ -130,7 +130,7 @@ class Alma extends React.Component{
     loc -= stepSize; 
     this.setState({loca: loc});
   }
-  else if (event.keyCode === 76 && this.state.loca <1000){
+  else if (event.keyCode === 76 && this.state.loca <width){
     loc += stepSize; 
     this.setState({loca: loc});
     //this.setState({vis: 'visible'});
@@ -170,7 +170,7 @@ class Enemy extends React.Component{
   constructor (props){
     super(props);
     this.state = {
-      x: Math.floor(Math.random()*1000+1),
+      x: Math.floor(Math.random()*width+1),
       y: 0,
       vis: 'visible',
       pic: Math.floor(Math.random()*5)
@@ -195,7 +195,7 @@ handler(event){
     this.setState({vis: 'hidden'});
     console.log("hit");
     score ++;
-    var temp = Math.floor(Math.random()*1000+1);
+    var temp = Math.floor(Math.random()*width+1);
 /*
     for (i = 0; i < 3; i++){
       if (clearance[i] === this.state.x){
