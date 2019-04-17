@@ -15,13 +15,13 @@ import BTL from './pics/10.png';
 
 
 var loc = 50;
-const stepSize = 10;
+const stepSize = 12;
 var clearance = [0,0,0];
 var i=0;
 const path = './pics/'
 const width = window.innerWidth;
 const scrnhgt = window.innerHeight;
-const enemySpeed = 15;
+const enemySpeed = 16;
 const pics = [P1,P2,P3,P4,P5];
 const iconSize = scrnhgt*0.15;
 const hitTolerance = iconSize/2*0.8;
@@ -39,15 +39,22 @@ const die = () => {
   ReactDOM.render(<img src={AMD} alt="img not available" style= {{maxWidth: iconSize, maxHeight: iconSize, 
             position: 'fixed',
   left: loc,
-  top: scrnhgt,}}></img>, document.getElementById('alma'));
+  top: scrnhgt-iconSize*2,}}></img>, document.getElementById('alma'));
 
+  ReactDOM.render(<div><img src={BTL} alt="img not available" style= {{maxWidth: width*0.2,
+    position: 'fixed',
+    marginLeft: width*0.4,
+  top: deadline - width*0.05}}></img> <h4 style= {{  position: 'fixed',
+  top: scrnhgt-50}}> game over </h4> </div>, document.getElementById('but'));
+  
 }
 
 
-ReactDOM.render(<img src={BTL} alt="img not available" style= {{maxWidth: width*0.5,
+ReactDOM.render(<div><img src={BTL} alt="img not available" style= {{maxWidth: width*0.2,
   position: 'fixed',
-  marginLeft: 'auto', marginRight: 'auto',
-top: deadline - width*0.05}}></img>, document.getElementById('but'));
+  marginLeft: width*0.4,
+top: deadline - width*0.05}}></img> <h4 style= {{  position: 'fixed',
+top: scrnhgt-70}}> "h" = Left; "l" = right; hold "j" to fight <br></br>AlmaFight by Eugene Pan 2019</h4> </div>, document.getElementById('but'));
 
 
 class Bullet extends Component{
@@ -114,7 +121,12 @@ class Alma extends React.Component{
           } 
       }>
       <img src={AM} alt="img not available" style= {{maxWidth: iconSize, maxHeight: iconSize}}></img>
-      <p>Location: {parseInt(this.state.loca)} score: {this.state.score}</p>
+      <h6 style={{
+          position: 'relative',
+          top: -30,
+          left: iconSize/6
+          } 
+      }>score: {this.state.score}</h6>
       </div>
       <div style={{
           visibility: this.state.vis,
@@ -170,7 +182,7 @@ class Enemy extends React.Component{
   constructor (props){
     super(props);
     this.state = {
-      x: Math.floor(Math.random()*width+1),
+      x: Math.floor(Math.random()* (width-iconSize) +1),
       y: 0,
       vis: 'visible',
       pic: Math.floor(Math.random()*5)
@@ -195,7 +207,7 @@ handler(event){
     this.setState({vis: 'hidden'});
     console.log("hit");
     score ++;
-    var temp = Math.floor(Math.random()*width+1);
+    var temp = Math.floor(Math.random()*(width-iconSize)+1);
 /*
     for (i = 0; i < 3; i++){
       if (clearance[i] === this.state.x){
