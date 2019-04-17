@@ -110,7 +110,7 @@ class Alma extends React.Component{
       <div style={{
           position: 'fixed',
           left: this.state.loca,
-          top: scrnhgt-iconSize*1.1,
+          top: scrnhgt-iconSize*2,
           } 
       }>
       <img src={AM} alt="img not available" style= {{maxWidth: iconSize, maxHeight: iconSize}}></img>
