@@ -126,7 +126,7 @@ class Alma extends React.Component{
           top: -30,
           left: iconSize/6
           } 
-      }>score: {this.state.score}</h6>
+      }>grade: {this.state.score}</h6>
       </div>
       <div style={{
           visibility: this.state.vis,
